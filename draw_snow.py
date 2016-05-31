@@ -26,5 +26,9 @@ while not done:
 		pygame.draw.circle(screen,white,snow_list[i],2)
 		snow_list[i][1] += 1
 
+		if snow_list[i][1]>size[1]:
+			snow_list[i][1]=random.randrange(-50,0)
+			snow_list[i][0]=random.randrange(0,size[0])
+
 	pygame.display.flip()
 	clock.tick(20)
