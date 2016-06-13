@@ -1,15 +1,18 @@
 import pygame
 import random
 import math
-
-def main():
-	pygame.init()
+def colors():
 	black = (0, 0, 0)
 	white = (255, 255, 255)
 	red = (255, 0, 0)
 	green = (0, 255, 0)
 	blue = (0, 0, 255)
-	color_list = [black, white, red, green, blue]
+	return black, white, red, green, blue
+
+def main():
+	pygame.init()
+	black, white, red, green, blue = colors()
+
 	size = [700, 500]
 	screen = pygame.display.set_mode(size)
 	PI=3.141592652
