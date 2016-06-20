@@ -10,11 +10,10 @@ def colors():
 		blue = (0, 0, 255)
 		return black, white, red, green, blue
 
-class gl:
+
+class Global:
 	size = [700,500]
 	screen = pygame.display.set_mode(size)
-
-
 
 
 class Sex(Enum):
@@ -34,7 +33,8 @@ class Player:
 		self.armor = armor
 
 	def print_me(self):
-		print(self.name, self.sex.name, self.current_hit_point,"/",self.max_hit_points, self.max_speed, self.armor)
+		print(self.name, self.sex.name, self.current_hit_point, "/",
+		      self.max_hit_points, self.max_speed, self.armor)
 
 
 class Ball():
@@ -57,8 +57,8 @@ class Ball():
 
 def main():
 	pygame.init()
-	size = gl.size
-	screen = gl.screen
+	size = Global.size
+	screen = Global.screen
 	black, white, red, green, blue = colors()
 	theBall = Ball(screen,red)
 	theBall.draw_self()
