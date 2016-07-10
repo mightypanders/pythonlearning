@@ -23,7 +23,8 @@ with.
 def calculate_distance(psi, angle_in_degrees):
 	""" Calculate the distance the mudball flies. """
 	angle_in_radians = math.radians(angle_in_degrees)
-	distance = .5 * psi ** 2 * math.sin(angle_in_radians) * math.cos(angle_in_radians)
+	distance = .5 * psi ** 2 * math.sin(angle_in_radians) * math.cos(
+		angle_in_radians)
 	return distance
 
 
@@ -85,9 +86,10 @@ def main():
 	print_instructions()
 	player_names = get_player_names()
 	distance_apart = random.randrange(50, 150)
-	main_loop(player_names,distance_apart)
+	main_loop(player_names, distance_apart)
 
-def main_loop(player_names,distance_apart):
+
+def main_loop(player_names, distance_apart):
 	# Keep looking until someone wins
 	done = False
 	while not done:
@@ -100,15 +102,14 @@ def main_loop(player_names,distance_apart):
 				break
 	play_again(player_names)
 
-def play_again(player_names):
 
+def play_again(player_names):
 	if input("Do you want to play again? (y/n) ") == "y":
 		type = input("Same players or new game? (same/new)")
 		if type == "same":
-			main_loop(player_names,random.randrange(50,150))
+			main_loop(player_names, random.randrange(50, 150))
 		if type == "new":
 			main()
-
 
 
 if __name__ == "__main__":

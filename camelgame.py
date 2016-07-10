@@ -3,8 +3,13 @@ import random
 
 def print_instructions():
 	print("Welcome to Camel!")
-	print("You have stolen a camel to make your way across the great Mobi desert.")
-	print("The natives want their camel back and are chasing you down! Survive your")
+	print(
+			"You have stolen a camel to make your way across the great Mobi "
+			"desert.")
+	print(
+			"The natives want their camel back and are chasing you down! "
+			"Survive "
+			"your")
 	print("desert trek and out run the natives.")
 
 
@@ -21,7 +26,7 @@ def show_options():
 def show_status(miles, drinks, natives):
 	print("Miles traveled: ", miles)
 	print("Drinks left in canteen: ", drinks)
-	print("The natives are ", miles-natives, " miles behind you")
+	print("The natives are ", miles - natives, " miles behind you")
 	input("Press Enter to continue")
 
 
@@ -53,7 +58,7 @@ def rest(camel, natives, thirst):
 	if camel != 0:
 		camel = 0
 	natives += random.randrange(7, 14)
-	if thirst > 0 and thirst <7:
+	if thirst > 0 and thirst < 7:
 		thirst = 0
 	print("The rest was very pleasant for your camel. It is happy now!")
 	return camel, natives, thirst
@@ -86,7 +91,7 @@ def check_camel_tired(camel, done):
 		elif camel >= 8:
 			print("Your camel died of exhaustion!")
 			done = True
-	return  done
+	return done
 
 
 def check_natives(natives, miles, Done):
@@ -111,36 +116,45 @@ def check_condition(miles, thirst, camel, natives, drinks, Done):
 	Done = check_camel_tired(camel, Done)
 	Done = check_natives(natives, miles, Done)
 	Done = check_progress(miles, Done)
-	return  Done
+	return Done
 
 
 def main_loop():
-	miles_traveled, thirst, camel_tired, natives_behind, drinks_left = init_values()
+	miles_traveled, thirst, camel_tired, natives_behind, drinks_left = \
+		init_values()
 
 	done = False
 	while not done:
-		done = check_condition(miles_traveled, thirst, camel_tired, natives_behind, drinks_left, done)
+		done = check_condition(miles_traveled, thirst, camel_tired,
+		                       natives_behind, drinks_left, done)
 		if done:
 			break
 		show_options()
 		choice = input("Your Choice? \n")
 		if choice.upper() == "A":
 			drinks_left, thirst = drink_canteen(drinks_left, thirst)
-			# drink from canteen
+		# drink from canteen
 		elif choice.upper() == "B":
-			miles_traveled, thirst, camel_tired, natives_behind = travel(2, miles_traveled, thirst, camel_tired,
-																		 natives_behind)
-			# moderate speed
+			miles_traveled, thirst, camel_tired, natives_behind = travel(2,
+			                                                             miles_traveled,
+			                                                             thirst,
+			                                                             camel_tired,
+			                                                             natives_behind)
+		# moderate speed
 		elif choice.upper() == "C":
-			miles_traveled, thirst, camel_tired, natives_behind = travel(1, miles_traveled, thirst, camel_tired,
-																		 natives_behind)
-			# fullspeed ahead
+			miles_traveled, thirst, camel_tired, natives_behind = travel(1,
+			                                                             miles_traveled,
+			                                                             thirst,
+			                                                             camel_tired,
+			                                                             natives_behind)
+		# fullspeed ahead
 		elif choice.upper() == "D":
-			camel_tired, natives_behind, thirst = rest(camel_tired, natives_behind, thirst)
-			# stop and rest
+			camel_tired, natives_behind, thirst = rest(camel_tired,
+			                                           natives_behind, thirst)
+		# stop and rest
 		elif choice.upper() == "E":
 			show_status(miles_traveled, drinks_left, natives_behind)
-			# status check
+		# status check
 		elif choice.upper() == "Q":
 			# quit
 			done = True
@@ -151,6 +165,7 @@ def main_loop():
 def main():
 	print_instructions()
 	main_loop()
+
 
 if __name__ == '__main__':
 	main()
