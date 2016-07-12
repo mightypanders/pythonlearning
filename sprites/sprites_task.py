@@ -1,6 +1,7 @@
 import random
-from Bullet import Entity
+
 import pygame
+from Bullet import Entity
 
 pygame.init()
 black = (0, 0, 0)
@@ -21,11 +22,12 @@ pygame.mouse.set_visible(False)
 
 
 class Block(pygame.sprite.Sprite):
-	def __init__(self, color, width, height):
+	def __init__(self, color, width, height,limit):
 		super(Block,self).__init__()
 		self.image = pygame.Surface([width, height])
 		self.image.fill(color)
 		self.rect = self.image.get_rect()
+		self.limit = limit
 
 	def reset(self):
 		self.rect.y = random.randrange(-100, -10)
@@ -33,58 +35,8 @@ class Block(pygame.sprite.Sprite):
 
 	def update(self):
 		self.rect.y += gamespeed
-		if self.rect.y > size[1]:
+		if self.rect.y > self.limit[1]:
 			self.reset()
-
-
-
-
-class Player(pygame.sprite.Sprite):
-	def __init__(self):
-		super(Player,self).__init__()
-		self.image = playersprite
-		self.image.set_colorkey(black)
-		self.rect = self.image.get_rect()
-		self.bulletlevel = 1
-
-	def update(self):
-		self.rect.x = pygame.mouse.get_pos()[0]
-		self.rect.y = pygame.mouse.get_pos()[1]
-
-	def destroy(self):
-		print("I died")
-
-	def shotLvlOne(self):
-		bulletsshot = []
-		bulletleft = Entity.Bullet()
-		bulletright = Entity.Bullet()
-		bulletright.rect.x = player.rect.right
-		bulletright.rect.y = player.rect.centery
-		bulletleft.rect.x = player.rect.x
-		bulletleft.rect.y = player.rect.centery
-		bulletsshot.append(bulletright)
-		bulletsshot.append(bulletleft)
-		return bulletsshot
-
-	def shotLvlTwo(self):
-		bulletsshot = []
-		bulletmiddle = Entity.Bullet()
-		bulletmiddle.rect.x = player.rect.centerx
-		bulletmiddle.rect.y = player.rect.y
-		bulletsshot.append(bulletmiddle)
-		return bulletsshot
-
-	def shoot(self, allsprites, bulletlist):
-		bulletsshot = []
-		if self.bulletlevel == 1:
-			bulletsshot = self.shotLvlOne()
-		if self.bulletlevel == 2:
-			bulletsshot = self.shotLvlOne()
-			bulletsshot.append(self.shotLvlTwo())
-		for bullet in bulletsshot:
-			allsprites.add(bullet)
-			bulletlist.add(bullet)
-
 
 class Scoreboard(pygame.sprite.Sprite):
 	def __init__(self):
@@ -98,13 +50,13 @@ class Scoreboard(pygame.sprite.Sprite):
 
 
 for i in range(block_number):
-	block = Block(black, 20, 15)
+	block = Block(black, 20, 15,size)
 	block.rect.x = random.randrange(size[0])
 	block.rect.y = random.randrange(size[1])
 	blocklist.add(block)
 	all_sprites.add(block)
 
-player = Player()
+player = Entity.Player(playersprite)
 all_sprites.add(player)
 
 while not done:
@@ -134,6 +86,8 @@ while not done:
 			block.reset()
 	if score >= 20:
 		player.bulletlevel=2
+	if score >= 50:
+		player.bulletlevel = 3
 	all_sprites.draw(screen)
 	pygame.display.flip()
 
