@@ -1,6 +1,6 @@
 import pygame
 
-import move_with_walls.entity
+import entity
 
 # Colors
 BLACK = (0, 0, 0)
@@ -17,14 +17,14 @@ CLOCK = pygame.time.Clock()
 DONE = False
 all_sprites = pygame.sprite.Group()
 wall_list = pygame.sprite.Group()
-walls = move_with_walls.entity.makesomewalls(BLUE, SCREEN_SIZE)
-walls.append(move_with_walls.entity.makesomeblocks(WHITE, SCREEN_SIZE, 8))
+walls = entity.makesomewalls(BLUE, SCREEN_SIZE)
+walls.append(entity.makesomeblocks(WHITE, SCREEN_SIZE, 8))
 
 for wall in walls:
 	wall_list.add(wall)
 	all_sprites.add(wall)
 
-player = move_with_walls.entity.Player(RED, 20, 20)
+player = entity.Player(RED, 20, 20)
 player.walls = wall_list
 
 all_sprites.add(player)
