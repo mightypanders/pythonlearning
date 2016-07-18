@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
 		self.walls = None
 
 		self.bomb_color = WHITE
-		self.bombs = []
+		self.bombs = pygame.sprite.Group()
 		self.bomb_max = 1
 		self.bombs_placed = 0
 
@@ -55,7 +55,7 @@ class Player(pygame.sprite.Sprite):
 			newbomb = Bomb(self.bomb_color, self)
 			# print(newbomb.rect.x, " ", newbomb.rect.y)
 			self.bombs_placed += 1
-			self.bombs.append(newbomb)
+			self.bombs.add(newbomb)
 			print(self.bombs)
 			return self.bombs
 		else:
@@ -98,38 +98,3 @@ class Wall(pygame.sprite.Sprite):
 		self.rect.y = y
 
 
-def makesomewalls(color, size):
-	wall_list = []
-
-	wall = Wall(0, 0, wall_width, size[1], color)
-	wall_list.append(wall)
-
-	wall = Wall(0, 0, size[0], wall_width, color)
-	wall_list.append(wall)
-
-	wall = Wall(size[0] - wall_width, 0, wall_width, size[1], color)
-	wall_list.append(wall)
-
-	wall = Wall(0, size[1] - wall_width, size[0], wall_width, color)
-	wall_list.append(wall)
-
-	return wall_list
-
-
-def makesomeblocks(color, size, count):
-	wall_list = []
-
-	cHor = (size[0] - (wall_width * 2)) / ((count * 2) + 1)
-	cVert = (size[1] - (wall_width * 2)) / ((count * 2) + 1)
-
-	# print("vert ", cVert, " hor ", cHor)
-
-	for j in range((count * 2)):
-		if j % 2 == 1:  # jede zweite Reihe wird gefüllt
-			for i in range((count * 2)):
-				if i % 2 == 1:  # jede zweite spalte wird gefüllt
-					wall = Wall(wall_width + i * cHor, wall_width + j * cVert,
-					            cHor,
-					            cVert, color)
-					wall_list.append(wall)
-	return wall_list
