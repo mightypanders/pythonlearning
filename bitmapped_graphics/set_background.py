@@ -1,5 +1,6 @@
 import pygame
 
+
 def main():
 	pygame.init()
 	size = [700, 500]

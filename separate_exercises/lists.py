@@ -8,8 +8,8 @@
 # 	second_list.append(int(input ("Enter int: ")))
 # print(second_list)
 
-third_list = [1,2,3,4,4,5,6,6,7,8,9]
-list_total =0
+third_list = [1, 2, 3, 4, 4, 5, 6, 6, 7, 8, 9]
+list_total = 0
 
 for i in range(len(third_list)):
 	list_total += third_list[i]

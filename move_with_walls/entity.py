@@ -53,14 +53,17 @@ class Player(pygame.sprite.Sprite):
 		if (self.bomb_max >= self.bombs_placed):
 			print("bombe hier")
 			newbomb = Bomb(self.bomb_color, self)
-			print(newbomb.rect.x, " ", newbomb.rect.y)
-			self.bombs_placed +=1
+			# print(newbomb.rect.x, " ", newbomb.rect.y)
+			self.bombs_placed += 1
 			self.bombs.append(newbomb)
-
+			print(self.bombs)
 			return self.bombs
 		else:
 			print("keine bombe")
 			return self.bombs
+
+	def bomb_exploded(self):
+		self.bombs_placed -= 1
 
 
 class Bomb(pygame.sprite.Sprite):
@@ -77,11 +80,12 @@ class Bomb(pygame.sprite.Sprite):
 		self.timeplaced = datetime.now()
 
 	def update(self):
-		delta = datetime.now () - self.timeplaced
-		delta = delta.seconds
+
+		delta = (datetime.now() - self.timeplaced).seconds
 		if delta > 3:
 			self.kill()
-			self.player.bombs_placed -=1
+			self.player.bomb_exploded()
+
 
 class Wall(pygame.sprite.Sprite):
 	def __init__(self, x, y, width, height, color):

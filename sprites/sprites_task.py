@@ -1,6 +1,7 @@
 import random
 
 import pygame
+
 from Bullet import Entity
 
 pygame.init()
@@ -22,8 +23,8 @@ pygame.mouse.set_visible(False)
 
 
 class Block(pygame.sprite.Sprite):
-	def __init__(self, color, width, height,limit):
-		super(Block,self).__init__()
+	def __init__(self, color, width, height, limit):
+		super(Block, self).__init__()
 		self.image = pygame.Surface([width, height])
 		self.image.fill(color)
 		self.rect = self.image.get_rect()
@@ -38,6 +39,7 @@ class Block(pygame.sprite.Sprite):
 		if self.rect.y > self.limit[1]:
 			self.reset()
 
+
 class Scoreboard(pygame.sprite.Sprite):
 	def __init__(self):
 		super().__init__()
@@ -50,7 +52,7 @@ class Scoreboard(pygame.sprite.Sprite):
 
 
 for i in range(block_number):
-	block = Block(black, 20, 15,size)
+	block = Block(black, 20, 15, size)
 	block.rect.x = random.randrange(size[0])
 	block.rect.y = random.randrange(size[1])
 	blocklist.add(block)
@@ -85,7 +87,7 @@ while not done:
 		for block in block_hit_list:
 			block.reset()
 	if score >= 20:
-		player.bulletlevel=2
+		player.bulletlevel = 2
 	if score >= 50:
 		player.bulletlevel = 3
 	all_sprites.draw(screen)

@@ -11,7 +11,7 @@ i = j = k = 0
 max = 11
 for i in range(max):
 	for k in range(i):
-		print(" ",end=" ")
-	for j in range(max - (i+1)):
-		print(j, end = " ")
+		print(" ", end=" ")
+	for j in range(max - (i + 1)):
+		print(j, end=" ")
 	print()

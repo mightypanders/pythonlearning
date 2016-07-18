@@ -1,7 +1,7 @@
 # import pygame
 
-from sounds.handler import *
 from graphics.handler import *
+from sounds.handler import *
 
 
 def main():

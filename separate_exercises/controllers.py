@@ -12,7 +12,7 @@ else:
 	my_joystick.init()
 	print(my_joystick.get_name())
 	print(my_joystick.get_numbuttons())
-	
+
 while not done:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:

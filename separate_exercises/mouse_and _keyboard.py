@@ -63,9 +63,9 @@ def main():
 		pos = pygame.mouse.get_pos()
 		draw_sticks(screen, sticklist)
 		draw_stickfigure(screen, pos[0], pos[1])
-		x_coord+=x_speed
-		y_coord+=y_speed
-		draw_stickfigure(screen, x_coord,y_coord)
+		x_coord += x_speed
+		y_coord += y_speed
+		draw_stickfigure(screen, x_coord, y_coord)
 		pygame.display.flip()
 		clock.tick(60)
 

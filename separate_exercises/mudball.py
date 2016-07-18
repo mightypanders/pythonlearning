@@ -24,7 +24,7 @@ def calculate_distance(psi, angle_in_degrees):
 	""" Calculate the distance the mudball flies. """
 	angle_in_radians = math.radians(angle_in_degrees)
 	distance = .5 * psi ** 2 * math.sin(angle_in_radians) * math.cos(
-		angle_in_radians)
+			angle_in_radians)
 	return distance
 
 

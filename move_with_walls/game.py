@@ -18,7 +18,7 @@ DONE = False
 all_sprites = pygame.sprite.Group()
 wall_list = pygame.sprite.Group()
 walls = entity.makesomewalls(BLUE, SCREEN_SIZE)
-walls.append(entity.makesomeblocks(WHITE, SCREEN_SIZE, 8))
+walls.append(entity.makesomeblocks(WHITE, SCREEN_SIZE, 5))
 
 for wall in walls:
 	wall_list.add(wall)
