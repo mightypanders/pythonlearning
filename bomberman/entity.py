@@ -1,10 +1,12 @@
 from datetime import datetime
-
+from sounds.handler import ingamesounds
 import pygame
 import colors
 
-wall_width = 10
 
+
+wall_width = 10
+sounds = ingamesounds()
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self, color, x, y):
@@ -50,6 +52,7 @@ class Player(pygame.sprite.Sprite):
 
 	def putbomb(self):
 		if self.bomb_max >= self.bombs_placed:
+			sounds.bomb_place.play()
 			print("bombe hier")
 			newbomb = Bomb(self.bomb_color, self)
 			self.bombs_placed += 1
@@ -79,9 +82,13 @@ class Bomb(pygame.sprite.Sprite):
 
 		delta = (datetime.now() - self.timeplaced).seconds
 		if delta > 3:
-			self.kill()
-			print(self.player.bombs_placed)
-			#self.player.bomb_exploded()
+			self.explode()
+	def explode(self):
+		sounds.bomb_explode.play()
+		self.kill()
+		print(self.player.bombs_placed)
+		#self.player.bomb_exploded()
+
 
 
 class Wall(pygame.sprite.Sprite):

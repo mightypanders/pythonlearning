@@ -3,8 +3,9 @@ import pygame
 pygame.init()
 
 
-class playersprite(int):
+class playersprite(pygame.sprite.Sprite):
 	def __init__(self, plnumber):
+		super().__init__()
 		self.playernumer = plnumber
 		print()
 

@@ -6,7 +6,7 @@ pygame.init()
 class ingamesounds:
 	def __init__(self):
 		self.bomb_place = pygame.mixer.Sound("sounds/bomb_place.wav")
-		# self.bomb_explode = pygame.mixer.Sound("")
+		self.bomb_explode = pygame.mixer.Sound("sounds/explosion_1.wav")
 		# self.walk_step = pygame.mixer.Sound("")
 		self.walk_bump = pygame.mixer.Sound("sounds/walk_bump.wav")
 		self.player_die = pygame.mixer.Sound("sounds/player_die.wav")

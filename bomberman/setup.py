@@ -21,12 +21,12 @@ def makeouterwalls(color, size):
 	return wall_list
 
 
-def makeinnerblocks(color, size, count):
+def makeinnerblocks(color, screensize, count):
 	wall_list = []
 
-	cHor = (size[0] - (wall_width * 2)) / ((count * 2) + 1)  # berechne wie
+	cHor = (screensize[0] - (wall_width * 2)) / ((count * 2) + 1)  # berechne wie
 	# breit ein "block" sein kann
-	cVert = (size[1] - (wall_width * 2)) / ((count * 2) + 1)  # berechne wie
+	cVert = (screensize[1] - (wall_width * 2)) / ((count * 2) + 1)  # berechne wie
 	# hoch ein "block" sein kann
 
 	for j in range((count * 2)):
