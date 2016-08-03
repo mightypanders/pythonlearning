@@ -1,12 +1,13 @@
 from datetime import datetime
-from sounds.handler import ingamesounds
+
 import pygame
+
 import colors
-
-
+from sounds.handler import ingamesounds
 
 wall_width = 10
 sounds = ingamesounds()
+
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self, color, x, y):
@@ -83,12 +84,13 @@ class Bomb(pygame.sprite.Sprite):
 		delta = (datetime.now() - self.timeplaced).seconds
 		if delta > 3:
 			self.explode()
+
 	def explode(self):
 		sounds.bomb_explode.play()
 		self.kill()
 		print(self.player.bombs_placed)
-		#self.player.bomb_exploded()
 
+	# self.player.bomb_exploded()
 
 
 class Wall(pygame.sprite.Sprite):

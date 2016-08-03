@@ -1,26 +1,23 @@
-import pygame
-
-from sounds.handler import *
-from graphics.handler import *
-from constants import *
 import setup
-from graphics.colors import *
+from constants import *
 from entity import Player
+from graphics.colors import *
+from graphics.handler import *
 
-SCREEN = pygame.display.set_mode(SCREEN_SIZE)
-CLOCK = pygame.time.Clock()
+#SCREEN = pygame.display.set_mode(SCREEN_SIZE)
+#CLOCK = pygame.time.Clock()
 DONE = False
 
 all_sprites = pygame.sprite.Group()
 wall_list = pygame.sprite.Group()
 
-walls = setup.makeouterwalls(BLOCK,SCREEN_SIZE)
-blocks = setup.makeinnerblocks(BLOCK,SCREEN_SIZE,5)
+walls = setup.makeouterwalls(BLOCK, SCREEN_SIZE)
+blocks = setup.makeinnerblocks(BLOCK, SCREEN_SIZE, 5)
 
-player = Player(PLAYER,20,20)
+player = Player(PLAYER, 20, 20)
 
-wall_list.add(walls,blocks)
-all_sprites.add(wall_list,player)
+wall_list.add(walls, blocks)
+all_sprites.add(wall_list, player)
 
 player.walls = wall_list
 
@@ -57,4 +54,3 @@ while not DONE:
 	pygame.display.flip()
 
 	CLOCK.tick(60)
-
